@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Workshop GIT + JQuery</title>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand margin-auto" href="#">Meteorologia ESTG</a>
+        </div>
+    </nav>
+    <section>
+        <div class="container pad-50-top">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <div class="row order-lg-1">
+                            <input type="text" data-input-cidade class="form-control col-lg-8 col-xs-12" placeholder="Nome da cidade">
+                            <button class="btn btn-outline-primary btn-block col-lg-4 col-xs-12" data-btn-cidade>Obter tempo</button>
+                        </div>
+                        <div class="row pad-20-top">
+                            <div class="col-7">
+                                <h2 data-name-cidade></h2>
+                                <h5 data-main-cidade></h5>
+                                <p data-description-cidade></p>
+                            </div>
+                            <div class="col-5">
+                                <img class="img-responsive col-10" data-img-weather src="img/01.jpg" alt="">
+                            </div>
+                        </div>
+                        <h2 class="pad-50-top">Temperatura atual: <span data-temp-cidade></span></h2>
+                        <div class="row pad-30-top">
+                            <div class="col-6">
+                                <h5>Temperatura minima:</h5>
+                                <h6 data-temp-min-cidade></h6>
+                                <h5>Temperatura maxima:</h5>
+                                <h6 data-temp-max-cidade></h6>
+                            </div>
+                            <div class="col-6">
+                                <h5>Nivel de humidade</h5>
+                                <h6 data-humidity-cidade></h6>
+                                <h5>Precipitação</h5>
+                                <h6 data-pressure-cidade></h6>
+                            </div>
+                        </div>
+                        <div class="row pad-30-top">
+                            <div class="col-6">
+                                <h5>Velocidade do vento:</h5>
+                                <h6 data-wind-cidade></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="map_div" style="width: 50%; height: 530px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

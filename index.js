@@ -10,15 +10,16 @@ var Objeto = function(){
 
     this.readNome = function(cidade){
         $.get("http://api.openweathermap.org/data/2.5/weather?q="
-        + cidade + "&appid=" + that.API_KEY);
+        + cidade + "&appid=" + that.API_KEY, function(res){
+            that.render(res);
+        });
     }
     this.render = function(res) {
-        //Adicionar o nome da cidade
         $("[data-name-cidade]").html(res.name);
         //Adicionar o termo geral do tempo
         $("[data-main-cidade]").html(res.weather[0]['main']);
         //Adicionar a descrição do tempo
-        $("[data-description-cidade]").html(res.weather[0]['description'])        ;
+        $("[data-description-cidade]").html(res.weather[0]['description']);
         //Adicionar a temperatura minima
         $("[data-temp-min-cidade]").html(Math.round(res.main.temp_min - 273.15) + 'º');
         //Adicionar a temperatura maxima
@@ -33,13 +34,21 @@ var Objeto = function(){
         $("[data-temp-cidade]").html(Math.round(res.main.temp - 273.15) + 'º');
         //Colocar o icon do tempo certo
         switch (res.weather[0]['icon']) {
-            case '02d':
-            $("[data-img-weather]").attr('src',
-            'img/icons/partly-cloudy-day.png');
-            break;
             case '01n':
             $("[data-img-weather]").attr('src',
             'img/icons/clear-night.png');
+            break;
+            case '01d':
+            $("[data-img-weather]").attr('src',
+            'img/icons/clear-day.png');
+            break;
+            case '02n':
+            $("[data-img-weather]").attr('src',
+            'img/icons/partly-cloudy-night.png');
+            break;
+            case '02d':
+            $("[data-img-weather]").attr('src',
+            'img/icons/partly-cloudy-day.png');
             break;
             case '03n':
             $("[data-img-weather]").attr('src',
@@ -108,20 +117,22 @@ var Objeto = function(){
             default:
             break;
         }
+
     };
     this.setup = function(){
         $("[data-input-cidade]").on('keypress', function(e){
             if (e.which == 13){
                 var cidade = $("[data-input-cidade]").val();
-                console.log(cidade);
+                that.readNome(cidade);
             }
         });
         $("[data-btn-cidade]").on("click",function(){
             var cidade = $("[data-input-cidade]").val();
-            console.log(cidade);
+            that.readNome(cidade);
         });
     }
     this.start = function(){
+        that.readNome("Viana do Castelo");
         that.setup();
     }
     that.start();
